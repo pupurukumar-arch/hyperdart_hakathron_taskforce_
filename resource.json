@@ -1,0 +1,54 @@
+{
+  "title": "Holiday Calendar and Smart PTO Optimizer",
+  "description": "Finds public holidays by country, year, month, or exact date and highlights high-value PTO opportunities.",
+  "componentScope": {
+    "supportedIntents": [
+      {
+        "intent": "holiday-search",
+        "description": "Queries requesting public holidays for a resolved country, optionally narrowed to a year, month, or exact date.",
+        "example": [
+          "Show public holidays in India 2026.",
+          "Holidays in Japan next month.",
+          "Is December 25 a holiday in the UK?"
+        ]
+      }
+    ]
+  },
+  "schema": {
+    "$defs": {
+      "queryType": {
+        "type": "string",
+        "enum": ["year", "month", "date-check"],
+        "description": "Whether the query requests a yearly list, a month filter, or an exact-date holiday check."
+      }
+    },
+    "type": "object",
+    "description": "Structured holiday-calendar intent. HyperDart resolves location; the component parses date fields locally.",
+    "properties": {
+      "type": {
+        "$ref": "#/$defs/queryType"
+      },
+      "year": {
+        "type": "integer",
+        "minimum": 1900,
+        "maximum": 2100,
+        "description": "Explicit or locally resolved calendar year."
+      },
+      "month": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 12,
+        "description": "Optional locally parsed calendar month."
+      },
+      "date": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Optional locally parsed exact date in YYYY-MM-DD format."
+      },
+      "entities": {
+        "collections": ["COUNTRIES"]
+      }
+    },
+    "required": ["type", "entities"]
+  }
+}

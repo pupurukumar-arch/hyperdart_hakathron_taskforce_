@@ -1,0 +1,25 @@
+[
+  {
+    "component": "holiday-calendar",
+    "entities": [
+      {
+        "word": "UK",
+        "collectionType": "HD_LOCATION",
+        "entityType": "LOCATION",
+        "entityInfo": {
+          "countryCode": "GB",
+          "hdLabel": "United Kingdom",
+          "geo": {
+            "country": "United Kingdom",
+            "countryCode": "GB"
+          }
+        }
+      }
+    ],
+    "query": "Is December 25 a holiday in UK 2026",
+    "_processedQuery": "is december 25 a holiday in uk 2026",
+    "componentEnabled": true,
+    "keyword": [{ "word": "holiday", "description": "" }],
+    "componentType": "internal"
+  }
+]
